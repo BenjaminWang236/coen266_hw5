@@ -174,42 +174,38 @@ class MinimaxAgent(MultiAgentSearchAgent):
             legalMoves = gameState.getLegalActions(playerIndex)
             succPlayerIndex = (playerIndex + 1) % gameState.getNumAgents()
             succDepth = (currentDepth + 1) if succPlayerIndex == 0 else currentDepth
-            succStates = [
-                gameState.generateSuccessor(succPlayerIndex, action)
-                for action in legalMoves
-            ]
 
             # Recursively get the score of the successor states
             scores = [
-                minimax_value_func(self, succState, succPlayerIndex, succDepth)
-                for succState in succStates
+                minimax_value_func(
+                    self,
+                    gameState.generateSuccessor(succPlayerIndex, action),
+                    succPlayerIndex,
+                    succDepth,
+                )
+                for action in legalMoves
             ]
 
             # Choose one of the best actions
             best_score = max(scores) if playerIndex == 0 else min(scores)
             # # Update the actual gameState
             # gameState = gameState.generateSuccessor(playerIndex, action)
+            if currentDepth == 0 and playerIndex == 0:
+                bestIndices = [
+                    index for index in range(len(scores)) if scores[index] == best_score
+                ]
+                # Pick randomly among the same best scores
+                chosenIndex = random.choice(bestIndices)
+                best_action = legalMoves[chosenIndex]
+                return best_score, best_action
             return best_score
 
         # Driver code:
         playerIndex = 0  # Always start at Pacman
         currentDepth = 0
-        root_node_value = minimax_value_func(
+        root_node_value, best_action = minimax_value_func(
             self, gameState, playerIndex=playerIndex, currentDepth=currentDepth
         )
-        legalMoves = gameState.getLegalActions(playerIndex)
-        succStates = [
-            gameState.generateSuccessor(playerIndex, action) for action in legalMoves
-        ]
-        scores = [self.evaluationFunction(succState) for succState in succStates]
-        best_score = max(scores)
-        bestIndices = [
-            index for index in range(len(scores)) if scores[index] == best_score
-        ]
-        # Pick randomly among the same best scores
-        chosenIndex = random.choice(bestIndices)
-        best_action = legalMoves[chosenIndex]
-
         print(root_node_value)
         return best_action
         # util.raiseNotDefined()
