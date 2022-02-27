@@ -198,23 +198,29 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
             # Choose one of the best actions
             best_score = max(scores) if playerIndex == 0 else min(scores)
-            bestIndices = [
-                index for index in range(len(scores)) if scores[index] == best_score
-            ]
-            # Pick randomly among the same best scores
-            chosenIndex = random.choice(bestIndices)
-            action = legalMoves[chosenIndex]
-            # Update the actual gameState
-            gameState = gameState.generateSuccessor(playerIndex, action)
+            # # Update the actual gameState
+            # gameState = gameState.generateSuccessor(playerIndex, action)
             return best_score
 
-        best_action = ""
-        root_node_value = ""
-        minimax_value_func(self, gameState, 0)
-        # # current_depth = self.depth  # Start at bottom of tree
-        # playerIndex = 0  # Pacman is always agent index 0
-        # # Going through all the agents/players == 1-ply/depth
-        # numAgents = gameState.getNumAgents()
+        # Driver code:
+        playerIndex = 0  # Always start at Pacman
+        currentDepth = 0
+        root_node_value = minimax_value_func(
+            self, gameState, playerIndex=playerIndex, currentDepth=currentDepth
+        )
+        legalMoves = gameState.getLegalActions()
+        succStates = [
+            gameState.generateSuccessor(playerIndex, action) for action in legalMoves
+        ]
+        scores = [self.evaluationFunction(succState) for succState in succStates]
+        best_score = max(scores)
+        bestIndices = [
+            index for index in range(len(scores)) if scores[index] == best_score
+        ]
+        # Pick randomly among the same best scores
+        chosenIndex = random.choice(bestIndices)
+        best_action = legalMoves[chosenIndex]
+
         print(root_node_value)
         return best_action
         # util.raiseNotDefined()
