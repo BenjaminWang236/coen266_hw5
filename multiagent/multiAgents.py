@@ -179,7 +179,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
             scores = [
                 minimax_value_func(
                     self,
-                    gameState.generateSuccessor(succPlayerIndex, action),
+                    gameState.generateSuccessor(playerIndex, action),
                     succPlayerIndex,
                     succDepth,
                 )

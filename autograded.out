@@ -1,0 +1,241 @@
+Starting on 2-27 at 15:30:00
+
+Question q2
+===========
+
+1.0
+*** PASS: test_cases\q2\0-eval-function-lose-states-1.test
+1.0
+*** PASS: test_cases\q2\0-eval-function-lose-states-2.test
+1.0
+*** PASS: test_cases\q2\0-eval-function-win-states-1.test
+1.0
+*** PASS: test_cases\q2\0-eval-function-win-states-2.test
+4.0
+*** PASS: test_cases\q2\0-lecture-6-tree.test
+3.0
+*** PASS: test_cases\q2\0-small-tree.test
+-3.0
+*** PASS: test_cases\q2\1-1-minmax.test
+-2.99
+*** PASS: test_cases\q2\1-2-minmax.test
+4.01
+*** PASS: test_cases\q2\1-3-minmax.test
+4.0
+*** PASS: test_cases\q2\1-4-minmax.test
+3.01
+*** PASS: test_cases\q2\1-5-minmax.test
+3.0
+*** PASS: test_cases\q2\1-6-minmax.test
+-1.99
+*** PASS: test_cases\q2\1-7-minmax.test
+-2.0
+*** PASS: test_cases\q2\1-8-minmax.test
+-4.0
+*** PASS: test_cases\q2\2-1a-vary-depth.test
+-3.0
+*** PASS: test_cases\q2\2-1b-vary-depth.test
+-3.99
+*** PASS: test_cases\q2\2-2a-vary-depth.test
+-3.0
+*** PASS: test_cases\q2\2-2b-vary-depth.test
+5.01
+*** PASS: test_cases\q2\2-3a-vary-depth.test
+5.01
+*** PASS: test_cases\q2\2-3b-vary-depth.test
+5.0
+*** PASS: test_cases\q2\2-4a-vary-depth.test
+4.99
+*** PASS: test_cases\q2\2-4b-vary-depth.test
+9.0
+*** PASS: test_cases\q2\2-one-ghost-3level.test
+5.0
+*** PASS: test_cases\q2\3-one-ghost-4level.test
+3.0
+*** PASS: test_cases\q2\4-two-ghosts-3level.test
+8.0
+*** PASS: test_cases\q2\5-two-ghosts-4level.test
+10.0
+*** PASS: test_cases\q2\6-tied-root.test
+10.0
+*** PASS: test_cases\q2\7-1a-check-depth-one-ghost.test
+10.0
+*** PASS: test_cases\q2\7-1b-check-depth-one-ghost.test
+8.0
+*** PASS: test_cases\q2\7-1c-check-depth-one-ghost.test
+10.0
+*** PASS: test_cases\q2\7-2a-check-depth-two-ghosts.test
+10.0
+*** PASS: test_cases\q2\7-2b-check-depth-two-ghosts.test
+8.0
+*** PASS: test_cases\q2\7-2c-check-depth-two-ghosts.test
+*** Running MinimaxAgent on smallClassic 1 time(s).
+18.0
+27.0
+36.0
+45.0
+54.0
+63.0
+72.0
+81.0
+90.0
+99.0
+108.0
+117.0
+116.0
+115.0
+114.0
+113.0
+112.0
+111.0
+110.0
+109.0
+108.0
+117.0
+126.0
+135.0
+324.0
+333.0
+342.0
+351.0
+360.0
+369.0
+378.0
+387.0
+386.0
+385.0
+384.0
+383.0
+382.0
+381.0
+380.0
+379.0
+378.0
+377.0
+376.0
+375.0
+374.0
+373.0
+372.0
+371.0
+370.0
+369.0
+368.0
+367.0
+366.0
+365.0
+364.0
+363.0
+372.0
+381.0
+390.0
+399.0
+408.0
+417.0
+426.0
+435.0
+444.0
+453.0
+462.0
+471.0
+480.0
+489.0
+498.0
+497.0
+496.0
+495.0
+494.0
+493.0
+492.0
+501.0
+510.0
+519.0
+528.0
+537.0
+536.0
+535.0
+534.0
+533.0
+532.0
+531.0
+530.0
+529.0
+528.0
+527.0
+526.0
+525.0
+524.0
+523.0
+522.0
+521.0
+520.0
+519.0
+518.0
+517.0
+516.0
+515.0
+514.0
+513.0
+512.0
+511.0
+510.0
+509.0
+508.0
+507.0
+506.0
+505.0
+504.0
+503.0
+502.0
+501.0
+500.0
+499.0
+498.0
+497.0
+496.0
+495.0
+494.0
+493.0
+492.0
+491.0
+490.0
+489.0
+488.0
+487.0
+486.0
+495.0
+504.0
+513.0
+522.0
+531.0
+540.0
+549.0
+558.0
+567.0
+576.0
+585.0
+84.0
+84.0
+Pacman died! Score: 84
+Average Score: 84.0
+Scores:        84.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** Finished running MinimaxAgent on smallClassic after 1 seconds.
+*** Won 0 out of 1 games. Average score: 84.000000 ***
+*** PASS: test_cases\q2\8-pacman-game.test
+
+### Question q2: 5/5 ###
+
+
+Finished at 15:30:01
+
+Provisional grades
+==================
+Question q2: 5/5
+------------------
+Total: 5/5
+
+Your grades are NOT yet registered.  To register your grades, make sure
+to follow your instructor's guidelines to receive credit on your project.
+
