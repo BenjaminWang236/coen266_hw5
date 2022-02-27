@@ -12,6 +12,7 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
+from sqlalchemy import true
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -163,18 +164,78 @@ class MinimaxAgent(MultiAgentSearchAgent):
         chosenIndex = random.choice(bestIndices) # Pick randomly among the best
         """
 
+        def value_func(self, gameState, playerIndex: int):
+            """
+            Return the best_score (min/max) for the given gameState and playerIndex
+
+            Args:
+                gameState (gameState): Pacman Game gameState
+                playerIndex (int): Pacman is always agent index 0, Ghosts are >= 1.
+                max (bool): True if maximizing player, False if minimizing player
+            
+            Returns:
+                best_score (int): The min/max value of the successor gameStates for playerIndex
+            """
+            # Exit Condition:
+            if gameState.isWin() or gameState.isLose():
+                # If node is leaf node, return score without updating the gameState
+                return self.evaluationFunction(gameState)
+
+            # Collect legal moves and successor states
+            legalMoves = gameState.getLegalActions()
+            succPlayerIndex = playerIndex + 1
+            if succPlayerIndex % gameState.getNumAgents() == 0:
+                # self.depth -= 1
+                succPlayerIndex = 0
+            best_succ_func = maxValue_func if playerIndex == 0 else minValue_func
+            succStates = [
+                gameState.generateSuccessor(succPlayerIndex, action)
+                for action in legalMoves
+            ]
+
+            # Recursively get the score of the successor states
+            scores = [
+                best_succ_func(self, succState, succPlayerIndex)
+                for succState in succStates
+            ]
+
+            # Choose one of the best actions
+            best_score = max(scores) if playerIndex == 0 else min(scores)
+            bestIndices = [
+                index for index in range(len(scores)) if scores[index] == best_score
+            ]
+            # Pick randomly among the same best scores
+            chosenIndex = random.choice(bestIndices)
+            action = legalMoves[chosenIndex]
+            # Update the actual gameState
+            gameState = gameState.generateSuccessor(playerIndex, action)
+            return best_score
+
+        def maxValue_func(self, gameState, playerIndex):
+            return value_func(self, gameState, playerIndex)
+
+        def minValue_func(self, gameState, playerIndex):
+            return value_func(self, gameState, playerIndex)
+
+        # NOTE: Leaves are terminal states
+
+        best_action = ""
+        root_node_value = ""
+        # current_depth = self.depth  # Start at bottom of tree
+        playerIndex = 0  # Pacman is always agent index 0
         # Going through all the agents/players == 1-ply/depth
         numAgents = gameState.getNumAgents()
 
-        def maxValue_func(self, gameState, playerIndex):
-            ...
+        ...
 
-        def minValue_func(self, gameState, playerIndex):
-            ...
+        # for ply in range(self.depth):
+        #     # Agents move in order of increasing index
+        #     for playerIndex in range(numAgents):
+        #         if playerIndex == 0:
+        #             maxValue_func(self, gameState, playerIndex)
+        #         else:
+        #             minValue_func(self, gameState, playerIndex)
 
-        "*** YOUR CODE HERE ***"
-        best_action = ""
-        root_node_value = ""
         print(root_node_value)
         return best_action
         # util.raiseNotDefined()
