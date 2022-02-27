@@ -153,17 +153,6 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
 
-        """ From Reflex Agent:
-        # Collect legal moves and successor states
-        legalMoves = gameState.getLegalActions()
-
-        # Choose one of the best actions
-        scores = [self.evaluationFunction(gameState, action) for action in legalMoves]
-        bestScore = max(scores)
-        bestIndices = [index for index in range(len(scores)) if scores[index] == bestScore]
-        chosenIndex = random.choice(bestIndices) # Pick randomly among the best
-        """
-
         def minimax_value_func(self, gameState, playerIndex: int, currentDepth: int):
             """
             Return the best_score (min/max) for the given gameState and playerIndex
@@ -182,7 +171,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
                 return self.evaluationFunction(gameState)
 
             # Collect legal moves and successor states
-            legalMoves = gameState.getLegalActions()
+            legalMoves = gameState.getLegalActions(playerIndex)
             succPlayerIndex = (playerIndex + 1) % gameState.getNumAgents()
             succDepth = (currentDepth + 1) if succPlayerIndex == 0 else currentDepth
             succStates = [
@@ -208,7 +197,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         root_node_value = minimax_value_func(
             self, gameState, playerIndex=playerIndex, currentDepth=currentDepth
         )
-        legalMoves = gameState.getLegalActions()
+        legalMoves = gameState.getLegalActions(playerIndex)
         succStates = [
             gameState.generateSuccessor(playerIndex, action) for action in legalMoves
         ]
